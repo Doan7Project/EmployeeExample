@@ -1,1 +1,99 @@
-h1 create a new employee
+<%- include("../../layouts/header")%>
+
+    <form action="create" method="post">
+        <div class="container pt-3 mb-4 ">
+            <div class="mb-2">
+                <h5 class="m-0 p-0">Create a new employee</h5>
+                <small class="text-muted">! Please create a new employee for <span
+                        class="fw-bolder text-warning">MANAGEMENT</span></small>
+            </div>
+            <div class="card card-body shadow-sm pt-4">
+                <div class="row mb-3">
+                    <div class="col-sm-4">
+                        <label for="firstname" class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="firstname" id="firstname"
+                            placeholder="Enter First Name">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="lastname" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" name="lastname" id="lastname"
+                            placeholder="Enter last Name">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="mobile" class="form-label">Mobile</label>
+                        <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-4">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" class="form-control" name="email" id="email"
+                            placeholder="Enter Email">
+                    </div>
+                    <div class="col-sm-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="Enter Password">
+                    </div>
+                    <div class="col-sm-5">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Enter address">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+
+                    <fieldset class="form-group">
+                        <legend class="">Gender</legend>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="gender1" value="0"
+                                checked="">
+                            <label class="form-check-label" for="gender1">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="gender2" value="1">
+                            <label class="form-check-label" for="gender2">
+                                Female
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="mb-3">
+                    <label for="image_url" class="form-label">Upload Image</label>
+                    <input type="file" class="form-control" name="image_url" id="fileUpload" placeholder="Enter Image">
+                </div>
+                <div class="mb-3">
+                    <div id="imageCt">
+                        <h6 class="text-muted">| Review image . . |</h6>
+                    </div>
+                    <div>
+                        <img class="shadow-sm" id="showImage" style="width: 180px;" src="" alt="">
+                    </div>
+
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary" style="width: 120px;">
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#fileUpload").change(function () {
+
+                if (this.files && this.files[0]) {
+                    var uploading = new FileReader();
+                    uploading.onload = function (display) {
+                        $("#showImage").attr('src', display.target.result);
+                        $("#imageCt").hide();
+                       
+                    }
+                    uploading.readAsDataURL(this.files[0]);
+             
+                }
+            });
+
+        });
+    </script>
+    <%- include("../../layouts/footer")%>

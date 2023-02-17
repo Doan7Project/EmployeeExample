@@ -3,6 +3,7 @@ const path = require("path");
 // const blade = require("blade");
 const rootRouter = require("./app/routes/rootRouter");
 const dbConnect = require("./app/config/dbConnect");
+const { notFound, errorHandler } = require("./app/middleware/errorhandler");
 require('dotenv').config()
 
 const app = express();
@@ -27,6 +28,9 @@ const publicDirectory = path.join(__dirname, "app/public");
 app.use(express.static(publicDirectory));
 
 app.use(rootRouter);
+
+app.use(notFound);
+app.use(errorHandler)
 
 app.listen(PORT, () => {
     console.log(`server is running at http://localhost:${PORT}`);

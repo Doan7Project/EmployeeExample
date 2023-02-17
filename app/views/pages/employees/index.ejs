@@ -1,19 +1,58 @@
 <%- include("../../layouts/header")%>
 
-  <div class="container pt-3 table-responsive" style="height: 77vh;">
+  <div class="container pt-3 table-responsive" style="height: 80vh;">
     <h3>Employee List <small class="text-muted fs-6">- Employee Management</small></h3>
-    <a href="/employee/create" class="btn btn-success">Create new employee</a>
+    <a href="/employee/create" class="btn btn-success mt-3">Create a new employee</a>
     <table class="table table-hover mt-3">
       <thead>
         <tr>
-          <th scope="col">Full Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">Address</th>
-          <th scope="col">Image</th>
-          <th scope="col">Action</th>
+          <th scope="col">Images</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Email</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
+        <%listData.forEach((item,index)=>{%>
+
+          <tr class="align-middle">
+            <td>
+              <img src="<%= item.image%>" alt="" sizes="" srcset="">
+            </td>
+            <td>
+              <%= item.firstname%>
+            </td>
+            <td>
+              <%= item.lastname%>
+            </td>
+            <%if(item.gender==1){%>
+              <td>
+                Male
+              </td>
+              <%}%>
+              <%if(item.gender==0){%>
+                <td>
+                  Female
+                </td>
+                <%}%>
+                <td>
+                  <%= item.mobile%>
+                </td>
+                <td>
+                  <%= item.email%>
+                </td>
+
+                <td>
+                  <a href="" class="btn btn-primary">Edit</a>
+                  <a href="" class="btn btn-danger">Remove</a>
+                </td>
+
+          </tr>
+          <%})%>
+
 
 
 
